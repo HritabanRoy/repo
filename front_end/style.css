@@ -1,0 +1,35 @@
+html, body{
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+.banner{
+	height: 28%;
+	width: 100%;	
+	background-color: cyan;
+}
+.page{
+	display: flex;
+	height: 72%;
+	width: 100%;	
+	flex-direction: column;
+	background-color: pink;
+	justify-content: center;
+}
+.t-block{
+	margin: 1.6% auto;
+	width: 84%;
+	height: 24%;
+	background-color: inherit;
+}
+.btn-cont{
+	display: flex;
+	justify-content: space-between;
+}
+.btn-cont-elem{
+	background-color: green;
+	width: 49%;
+}
+.big-btn{
+	background-color: lightgreen;
+}
