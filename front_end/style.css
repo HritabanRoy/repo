@@ -2,18 +2,32 @@ html, body{
 	margin: 0;
 	height: 100%;
 	width: 100%;
+	font-family: "Helvetica"
+}
+@font-face {
+	font-family: 'bangers';
+	src: url('source/bangers.ttf');
 }
 .banner{
+	display: flex;
 	height: 28%;
 	width: 100%;	
-	background-color: cyan;
+	background: url('source/banner2.png');
+	background-size: cover;
+}
+.banner h1{
+	font-family: bangers;
+	margin: auto;
+	color: white;
+	font-size: 6em;
+	letter-spacing: 0.4em;
 }
 .page{
 	display: flex;
 	height: 72%;
 	width: 100%;	
 	flex-direction: column;
-	background-color: pink;
+	background-color: #ceede8;
 	justify-content: center;
 }
 .t-block{
@@ -27,9 +41,24 @@ html, body{
 	justify-content: space-between;
 }
 .btn-cont-elem{
-	background-color: green;
+	display: flex;
+	background: url('source/pink-bg.png');
+	background-size: cover;
 	width: 49%;
 }
 .big-btn{
-	background-color: lightgreen;
+	display: flex;
+	text-align: center;
+	background: url('source/pink-bg.png');
+	background-size: cover;
+}
+.btn-center-text{
+	margin: auto;
+	font-size: 2.4em;
+	letter-spacing: 0.4em;
+}
+.no-decor{
+	font-weight: thin;
+	text-decoration: none;
+	color: white;
 }
