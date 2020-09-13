@@ -5,6 +5,7 @@
         padding: 36px;
         background-color: rgb(245, 245, 245);
     }
+
     .header div {
         margin: 0 auto 0;
         font-family: 'Yeseva One', cursive;
@@ -12,9 +13,11 @@
         font-size: 32px;
         color: rgb(72, 72, 72);
     }
+
     .img-block {
-        padding: 7.2px;
+        padding: 7.2px 7.2px 0.6px 7.2px;
     }
+
 </style>
 <body style="background-color: rgb(235, 235, 235)">
 <div class="header" width="600px">
@@ -23,8 +26,15 @@
 <div style="padding: 18px;">
     <center>
         <ul style="list-style-type:none;">
-            {% for link in links %}
-            <li><img class="img-block" src="{{ link }}" width="360px"></li>
+            {% for v in data.values() %}
+            <li>
+                <figure>
+                    <a href="{{ v['url'] }}">
+                        <img class="img-block" src="{{ v['content'] }}" width="360px">
+                    </a>
+                    <figcaption><strong>{{ v["title"] }}</strong></figcaption>
+                </figure>
+            </li>
             {% endfor %}
         </ul>
     </center>

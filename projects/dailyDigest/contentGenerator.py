@@ -9,8 +9,8 @@ file_loader = FileSystemLoader('')
 env = Environment(loader=file_loader)
 template = env.get_template('mailTempelate.html')
 
-links = loadJson('redditJsonOut.json')
-output = template.render(links=links)
+data = loadJson('redditJsonOut.json')
+output = template.render(data=data)
 
 storeHTML('mail.html',output)
 

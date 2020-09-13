@@ -1,11 +1,11 @@
 {
    "1":{
       "subreddit":"memes",
-      "post_limit":6
+      "post_limit":10
    },
    "2":{
       "subreddit":"dankmemes",
-      "post_limit":6
+      "post_limit":10
    },
    "3":{
       "subreddit":"worldnews",

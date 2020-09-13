@@ -11,21 +11,25 @@ def getJson(subreddit_name, post_limit):
     with urllib.request.urlopen("https://www.reddit.com/r/{}/top/.json?limit={}".format(subreddit_name, post_limit)) as url:
         return json.loads(url.read().decode())
 
+
 def extractFromJson(post_data_json, post_limit):
     #extract post url out of json
     for post_number in range(post_limit):
-        post_links.append(post_data_json["data"]["children"][post_number]["data"]["url_overridden_by_dest"])
+        processed_data[len(processed_data)] = {
+            "title" : post_data_json["data"]["children"][post_number]["data"]["title"],
+            "content" : post_data_json["data"]["children"][post_number]["data"]["url"],
+            "url" : "https://reddit.com" + post_data_json["data"]["children"][post_number]["data"]["permalink"]
+        }
 
 
-def storeJson(json_filename):
+def storeJson(json_filename, json_content):
     # stores post url in json file
     with open(json_filename, 'w') as json_file:
-        json.dump(post_links, json_file, indent=3) #post_links is json variable
+        json.dump(json_content, json_file, indent=3) #post_links is json variable
 
 
-
+processed_data = {} #dict stores extracted data
 subreddits = loadJson('subreddits.json')
-post_links = [] #list to store output links
 for v in subreddits.values():
     subreddit_name = v["subreddit"]
     post_limit = v["post_limit"]
@@ -34,10 +38,10 @@ for v in subreddits.values():
     if post_limit == 0:
         continue
 
-    post_json = getJson(subreddit_name, post_limit)
-    extractFromJson(post_json, post_limit)
+    content_data = getJson(subreddit_name, post_limit)
+    extractFromJson(content_data, post_limit)
 
-storeJson('redditJsonOut.json')
+storeJson('redditJsonOut.json', processed_data)
 
 
 
