@@ -1,0 +1,26 @@
+{
+   "1":{
+      "subreddit":"memes",
+      "post_limit":6
+   },
+   "2":{
+      "subreddit":"dankmemes",
+      "post_limit":6
+   },
+   "3":{
+      "subreddit":"worldnews",
+      "post_limit":0
+   },
+   "4":{
+      "subreddit":"moviesuggestions",
+      "post_limit":0
+   },
+   "5":{
+      "subreddit":"music",
+      "post_limit":0
+   },
+   "6":{
+      "subreddit":"aww",
+      "post_limit":0
+   }
+}
