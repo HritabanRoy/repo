@@ -1,9 +1,10 @@
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+import reddit_scraper
+import content_generator
+import email_system
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
+    scraped_data = reddit_scraper.scrape()
+    content_generator.generate(scraped_data)
+    email_system.sendMail("email_list.json", "me", "code structuring success")

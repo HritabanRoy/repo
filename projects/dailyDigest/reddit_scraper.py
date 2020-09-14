@@ -12,7 +12,7 @@ def getJson(subreddit_name, post_limit):
         return json.loads(url.read().decode())
 
 
-def extractFromJson(post_data_json, post_limit):
+def processData(post_data_json, post_limit, processed_data):
     #extract post url out of json
     for post_number in range(post_limit):
         processed_data[len(processed_data)] = {
@@ -22,26 +22,27 @@ def extractFromJson(post_data_json, post_limit):
         }
 
 
-def storeJson(json_filename, json_content):
+def storeJson(json_filename, json_content): #regressed
     # stores post url in json file
     with open(json_filename, 'w') as json_file:
         json.dump(json_content, json_file, indent=3) #post_links is json variable
 
 
-processed_data = {} #dict stores extracted data
-subreddits = loadJson('subreddits.json')
-for v in subreddits.values():
-    subreddit_name = v["subreddit"]
-    post_limit = v["post_limit"]
+def scrape():
+    processed_data = {}
+    subreddits_to_scrape = loadJson('subreddits_to_scrape.json')
+    for subreddit in subreddits_to_scrape.values():
+        subreddit_name = subreddit["subreddit"]
+        post_limit = subreddit["post_limit"]
 
-    #skip empty subreddits
-    if post_limit == 0:
-        continue
+        if post_limit == 0:
+            continue
+        
+        raw_data = getJson(subreddit_name, post_limit)
+        processData(raw_data, post_limit, processed_data)
+    return processed_data
 
-    content_data = getJson(subreddit_name, post_limit)
-    extractFromJson(content_data, post_limit)
 
-storeJson('redditJsonOut.json', processed_data)
 
 
 
